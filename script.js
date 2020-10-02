@@ -14,11 +14,20 @@ function writePassword() {
   function generatePassword(){
     // setting variable and collecting collecting information from user.
     var pLength = prompt("Choose a password length of at least 8 characters and no more than 128 characters.")
-    alert("Must Choose at least one character type.")
+
+    if(pLength < 8 || pLength > 128){
+      alert("Invalid Password Length.")
+      return;
+    }
     var lowerCase = confirm("Do you want to include lower case letters?")
     var upperCase = confirm("Do you want upper case letters?")
     var numbers = confirm("Do you want Numbers?")
     var spcChar = confirm("Do you want Special characters?")
+
+    if(lowerCase === false && upperCase === false && numbers === false && spcChar === false){
+      alert("Must include at least one Character type.")
+      return;
+    }
 
     if(lowerCase===true && upperCase===true && numbers === true && spcChar === true){
       return generateP(pLength);
